@@ -53,7 +53,7 @@ function showVennDiagram(variants1, variants2) {
 
 				// Display a tooltip with the current size
 				tooltip.transition().duration(400).style("opacity", .9);
-				tooltip.text(d.size + " users");
+				tooltip.text(d.size + " variants");
 
 				// highlight the current path
 				var selection = d3.select(this).transition("tooltip").duration(400);
