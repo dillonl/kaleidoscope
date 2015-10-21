@@ -24,9 +24,9 @@ function showVennDiagram(variants1, variants2) {
 		vennElement = $('#'+vennPlotID);
 	}
 	else {
-		$('#plotting-area').append('<div id="' + vennPlotID + '">hello</div>');
-
+		$('#plotting-area').append('<div id="' + vennPlotID + '"></div>');
 	}
+	var tooltip = d3.select("body").append("div").attr("class", "venntooltip");
 	partitionVariantSets(variants1, variants2, function (variants1ComplementKeys, variants2ComplementKeys, variantsIntersectionKeys) {
 		var firstVCFSize = variants1ComplementKeys.length + variantsIntersectionKeys.length;
 		var secondVCFSize = variants2ComplementKeys.length + variantsIntersectionKeys.length;
@@ -42,8 +42,7 @@ function showVennDiagram(variants1, variants2) {
 
 		var div = d3.select("#" + vennPlotID);
 		// add a tooltip
-		var tooltip = d3.select("body").append("div")
-			.attr("class", "venntooltip");
+
 
 		// add listeners to all the groups to display tooltip on mousover
 		div.selectAll("g")
@@ -53,7 +52,7 @@ function showVennDiagram(variants1, variants2) {
 
 				// Display a tooltip with the current size
 				tooltip.transition().duration(400).style("opacity", .9);
-				tooltip.text(d.size + " users");
+				tooltip.text(d.size + " variants");
 
 				// highlight the current path
 				var selection = d3.select(this).transition("tooltip").duration(400);
